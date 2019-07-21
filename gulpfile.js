@@ -30,7 +30,7 @@ function styles() {
 
 function scripts() {
     return gulp.src(jsFiles)
-            .pipe(concat("script.js"))
+            //.pipe(concat("script.js"))
             //Uglify don't work with ES6
             //
             // .pipe(uglify({
