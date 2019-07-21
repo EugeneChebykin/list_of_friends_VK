@@ -29,5 +29,11 @@ export default {
     },
     getUser(params = {}) {
         return this.callApi("users.get", params);
+    },
+    getFriends(params = {}) {
+        return this.callApi("friends.get", params);
+    },
+    getNews(params = {}) {
+        return this.callApi("newsfeed.get", params);
     }
 };

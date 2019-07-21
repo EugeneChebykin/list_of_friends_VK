@@ -10,6 +10,8 @@ const browserSync = require("browser-sync").create();
 const jsFiles = [
     "src/js/model.js",
     "src/js/view.js",
+    "src/js/router.js",
+    "src/js/controller.js",
     "src/js/script.js"
 ];
 
@@ -29,7 +31,7 @@ function styles() {
 }
 
 function scripts() {
-    return gulp.src(jsFiles)
+    return gulp.src("src/js/**/*.js")
             //.pipe(concat("script.js"))
             //Uglify don't work with ES6
             //
