@@ -7,18 +7,14 @@ const uglify = require("gulp-uglify");
 const del = require("del");
 const browserSync = require("browser-sync").create();
 
-const cssFiles = [
-    "node_modules/normalize.css/normalize.css",
-    "node_modules/fortawesome/fontawesome-free/css/all.css",
-    "src/less/styles.less"
-];
-
 const jsFiles = [
+    "src/js/model.js",
+    "src/js/view.js",
     "src/js/script.js"
 ];
 
 function styles() {
-    return gulp.src(cssFiles)
+    return gulp.src("./src/less/styles.less")
             .pipe(concat("styles.css"))
             .pipe(less())
             .pipe(autoPrefixer({
@@ -26,11 +22,7 @@ function styles() {
                 cascade: false
             }))
             .pipe(cleanCSS({
-                level: {
-                    2: {
-                        all: true
-                    }
-                }
+                level: 2
             }))
             .pipe(gulp.dest("build/css"))
             .pipe(browserSync.stream());
