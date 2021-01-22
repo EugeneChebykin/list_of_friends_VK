@@ -4,6 +4,7 @@
   "description": "qwerty",
   "main": "gulpfile.js",
   "dependencies": {
+    "local-cors-proxy": "^1.1.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
@@ -18,7 +19,8 @@
     "handlebars": "^4.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "proxy": "lcp --proxyUrl https://www.vk.com"
   },
   "author": "Eugene",
   "license": "ISC"

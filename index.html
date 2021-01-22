@@ -1,79 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="build/css/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="build/css/styles.css" />
     <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="build/js/script.js" type="module" defer></script>
     <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-        }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div id="header" class="text-center"></div>
+      <div id="header" class="text-center"></div>
 
-        <div class="btn-group btn-group-lg d-flex justify-content-center">
-            <a class="btn btn-primary" data-role="nav-friends" href="#friends">Друзья</a>
-            <a class="btn btn-primary" data-role="nav-news" href="#news">Новости</a>
-        </div>
-        <hr>
-        <div id="results"></div>
+      <div class="btn-group btn-group-lg d-flex justify-content-center">
+        <a class="btn btn-primary" data-role="nav-friends" href="#friends">Друзья</a>
+        <a class="btn btn-primary" data-role="nav-news" href="#news">Новости</a>
+      </div>
+      <hr />
+      <div id="results"></div>
     </div>
 
     <script id="headerTemplate" type="text/x-handlebars-template">
-        <h1>Данные из VK-аккаунта {{first_name}} {{last_name}}</h1>
+      <h1>
+        Данные из VK-аккаунта {{first_name}} {{last_name}}
+      </h1>
     </script>
 
     <script id="friendsTemplate" type="text/x-handlebars-template">
+      <div>
         <div>
-            <div>
-                <select class="form-control" data-role="sort">
-                    <option value="name">По имени</option>
-                    <option value="bday">По дате рождения</option>
-                </select>
-            </div>
-            <div class="grid-container">
-                {{#each list}}
-                <div class="friends text-center">
-                    <a href="#friends/{{id}}"><img src="{{photo_100}}" class="rounded-circle"></a>
-                    <div>{{first_name}}<br>{{last_name}}</div>
-                    <div>{{formatBDay bdate}}</div>
-                </div>
-                {{/each}}
-            </div>
+          <select class="form-control" data-role="sort">
+            <option value="name">
+              По имени
+            </option>
+            <option value="bday">
+              По дате рождения
+            </option>
+          </select>
         </div>
+        <div class="grid-container">
+          {{#each list}}
+            <div class="friends text-center">
+              <a href="#friends/{{id}}">
+                <img src="{{photo_100}}" class="rounded-circle" />
+              </a>
+              <div>
+                {{first_name}}<br />{{last_name}}
+              </div>
+              <div>
+                {{formatBDay bdate}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
     </script>
 
     <script id="friendTemplate" type="text/x-handlebars-template">
+      <div>
+        <img src="{{photo_200}}" class="rounded-circle" />
         <div>
-            <img src="{{photo_200}}" class="rounded-circle">
-            <div>{{first_name}} {{last_name}}</div>
-            <div>{{country.title}} {{city.title}}</div>
-            {{#if bdate}}
-            <div>День рождения {{formatBDay bdate}}</div>
-            {{/if}}
+          {{first_name}} {{last_name}}
         </div>
+        <div>
+          {{country.title}} {{city.title}}
+        </div>
+        {{#if bdate}}
+          <div>
+            День рождения {{formatBDay bdate}}
+          </div>
+        {{/if}}
+      </div>
     </script>
 
     <script id="newsTemplate" type="text/x-handlebars-template">
-        <div class="news">
-            {{#each list}}
-            {{#if text}}
+      <div class="news">
+        {{#each list}}
+          {{#if text}}
             <div class="post">
-                <b>{{formatDate date}}</b>
-                <div class="post-text">{{text}}</div>
+              <b>
+                {{formatDate date}}
+              </b>
+              <div class="post-text">
+                {{text}}
+              </div>
             </div>
-            <hr>
-            {{/if}}
-            {{/each}}
-        </div>
+            <hr />
+          {{/if}}
+        {{/each}}
+      </div>
     </script>
-</body>
+  </body>
 </html>

@@ -1,11 +1,11 @@
 export default {
-    render(templateName, model) {
-        templateName = templateName + "Template";
+  render(templateName, model) {
+    templateName = templateName + "Template";
 
-        const templateElement = document.getElementById(templateName);
-        const templateSource = templateElement.innerHTML;
-        const renderFn = Handlebars.compile(templateSource);
+    const templateElement = document.getElementById(templateName);
+    const templateSource = templateElement.innerHTML;
+    const renderFn = Handlebars.compile(templateSource);
 
-        return renderFn(model);
-    }
-}
+    return renderFn(model);
+  },
+};
